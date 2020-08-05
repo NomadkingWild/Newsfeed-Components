@@ -114,3 +114,55 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+function articleMaker(articleObj){
+const article = document.createElement("div")
+const articleTitle = document.createElement('h2')
+const date = document.createElement('p')
+const para1 = document.createElement('p')
+const para2 = document.createElement('p')
+const para3 = document.createElement('p')
+const expandButton = document.createElement("span")
+
+article.appendChild(articleTitle)
+article.appendChild(date)
+article.appendChild(para1)
+article.appendChild(para2)
+article.appendChild(para3)
+article.appendChild(expandButton)
+
+article.className = "article"
+article.className = "date"
+article.className = "para1"
+article.className = "para2"
+article.className = "para3"
+article.className = "expandButton"
+
+articleTitle.textContent = articleObj.title
+date.textContent = articleObj.date
+para1.textContent = articleObj.firstParagraph
+para2.textContent = articleObj.secondParagraph
+para3.textContent = articleObj.thirdParagraph
+
+expandButton.addEventListener("click", event =>{
+  articles.classList.toggle('article-open')
+})
+  return article
+}
+data.forEach(articleObj=>{
+  const theArticle = articleMaker(articleObj)
+  article.appendChild(theArticle)
+})
+
+function article(props){
+  return(
+    <div>
+    <h2>{props.title}</h2>
+    <p>{props.date}</p>
+
+    <p>{props.firstParagraph}</p>
+    <p>{props.secondParagraph}</p>
+    <p>{props.thirdParagraph}</p>
+    <span>+</span>
+  </div>
+  )
+}
