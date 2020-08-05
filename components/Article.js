@@ -145,6 +145,7 @@ para3.textContent = articleObj.thirdParagraph
 
 expandButton.addEventListener("click", event =>{
   articles.classList.toggle('article-open')
+  articles.classList.toggle("toggle-on")
 })
   return article
 }
