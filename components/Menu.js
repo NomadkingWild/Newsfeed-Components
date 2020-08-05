@@ -31,47 +31,27 @@ let menuItems = [
 
   Step 6: Use 'menuMaker' to create a menu using the 'menuItems' array, and append the returned menu to the header.
 */
-const menu = document.querySelector('menuItems')
+function menuMaker(menuArr){
+  const menu = document.createElement('div');
+  const list = document.createElement('ul');
+  const menuButton = document.querySelector('.menu-button');
 
-function menuMaker(menuObj){
-  const menu = document.createElement("div")
-  const list = document.createElement("ul")
-  const item1 = document.createElement("li")
-  const item2 = document.createElement("li")
-  const item3 = document.createElement("li")
 
-  menu.appendChild(list)
-  menu.appendChild(item1)
-  menu.appendChild(item2)
-  menu.appendChild(item3)
+  menu.className = 'menu'
 
-  menu.className ="Menu"
-
-  item1.textContent = menuItems[1]
-  item2.textContent = menuItems[2]
-  item3.textContent = menuItems[3]
-
-  menuButton.addEventListener("click", event=>{
-    menu.classList.toggle('menu-open')
-    menu.classList.toggle('toggle-on')
+  menuArr.forEach(item => {
+    const listItem = document.createElement('li')
+    listItem.textContent = item;
+    list.appendChild(listItem);
   })
-  return menu
-}
-const theDummyMenu = menuMaker({menuItems[1]: "Chicken", menuItems[2]:'Mashed Potatoes', menuItems[3]:"peas"})
-menu.appendChild(theDummyMenu)
 
-menuItems.forEach(menuObj =>{
-  const theMenu = menuMaker(menuObj)
-  menu.appendChild(theMenu)
-})
-function menu(props){
-  return(
-    <div>
-    <ul>
-      <li>{props.menuItems[1]}</li>
-      <li>{props.menuItems[2]}</li>
-  <li>{props.menuItems[3]}</li>
-    </ul>
-  </div>
-  )
+  menuButton.addEventListener('click', (event)=>{
+    menu.classList.toggle('menu--open');
+  })
+  menu.appendChild(list);
+
+return menu; 
 }
+
+const location = document.querySelector('.header')
+location.appendChild(menuMaker(menuItems));

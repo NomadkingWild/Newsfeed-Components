@@ -133,41 +133,29 @@ article.appendChild(para3)
 article.appendChild(expandButton)
 
 article.className = "article"
-article.className = "date"
-article.className = "para1"
-article.className = "para2"
-article.className = "para3"
-article.className = "expandButton"
+date.className = "date"
+para1.className = "para1"
+para2.className = "para2"
+para3.className = "para3"
+expandButton.className = "expandButton"
 
 articleTitle.textContent = articleObj.title
 date.textContent = articleObj.date
 para1.textContent = articleObj.firstParagraph
 para2.textContent = articleObj.secondParagraph
 para3.textContent = articleObj.thirdParagraph
+expandButton.textContent = "+"
 
-expandButton.addEventListener("click", event =>{
-  articles.classList.toggle('article-open')
-  articles.classList.toggle("toggle-on")
+expandButton.addEventListener("click", (event)=>{
+  article.classList.toggle('article-open')
 })
   return article
 }
 const theDummyArticle = articleMaker({title: 'foo', date: 'june 5, 2020', firstParagraph:'blah', secondParagraph: 'blah blah', thirdParagraph:'blah blah blah'})
 articles.appendChild(theDummyArticle)
+
 data.forEach(articleObj=>{
   const theArticle = articleMaker(articleObj)
-  article.appendChild(theArticle)
+  articles.appendChild(theArticle)
 })
 
-function article(props){
-  return(
-    <div>
-    <h2>{props.title}</h2>
-    <p>{props.date}</p>
-
-    <p>{props.firstParagraph}</p>
-    <p>{props.secondParagraph}</p>
-    <p>{props.thirdParagraph}</p>
-    <span>+</span>
-  </div>
-  )
-}
